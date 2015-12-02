@@ -60,6 +60,11 @@ public class MainWindow extends javax.swing.JFrame {
         consultaLabel.setText("Bairro:");
 
         addButton.setText("Add...");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +111,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void consultaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_consultaTextFieldActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        AddWindow addWindow = new AddWindow();
+        addWindow.setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
