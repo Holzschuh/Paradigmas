@@ -4,17 +4,23 @@
  * and open the template in the editor.
  */
 package View;
-
+import Model.Posto;
+import Model.PostoTableModel;
 /**
  *
  * @author Inutiu
  */
 public class AddWindow extends javax.swing.JFrame {
-
+    PostoTableModel postos;
     /**
      * Creates new form AddWindow
      */
-    public AddWindow() {
+    public AddWindow(){
+        initComponents();
+    }
+    
+    public AddWindow(PostoTableModel postos) {
+        this.postos = postos;
         initComponents();
     }
 
@@ -83,6 +89,11 @@ public class AddWindow extends javax.swing.JFrame {
         });
 
         addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         cancelarButton.setText("Cancelar");
         cancelarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +209,24 @@ public class AddWindow extends javax.swing.JFrame {
     private void razaoSocialTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razaoSocialTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_razaoSocialTextFieldActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if(cnpjTextField.getText().length() == 0 || razaoSocialTextField.getText().length() == 0 || nomeTextField.getText().length() == 0 ||
+                bandeiraTextField.getText().length() == 0 || enderecoTextField.getText().length() == 0 || bairroTextField.getText().length() == 0 || 
+                cepTextField.getText().length() == 0 || imagemTextField.getText().length() == 0)
+        {
+            // não bateu
+        }
+        else{
+            Posto posto = new Posto(cnpjTextField.getText(), razaoSocialTextField.getText(), nomeTextField.getText(), bandeiraTextField.getText(),
+                                                        enderecoTextField.getText() ,bairroTextField.getText() ,cepTextField.getText(), imagemTextField.getText());
+            postos.addPosto(posto);
+        }
+        
+        
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments

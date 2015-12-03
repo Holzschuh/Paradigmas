@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package View;
-
+import Model.PostoTableModel;
 /**
  *
  * @author Inutiu
  */
 public class MainWindow extends javax.swing.JFrame {
-
+    
+    private PostoTableModel postos;
+    
     /**
      * Creates new form mainWindow
      */
     public MainWindow() {
+        postos = new PostoTableModel();
         initComponents();
     }
 
@@ -114,7 +117,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        AddWindow addWindow = new AddWindow();
+        AddWindow addWindow = new AddWindow(postos);
         addWindow.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 

@@ -24,15 +24,16 @@ public class Posto {
     private final static int maxCombustiveis = 10;
     private ArrayList<Combustivel> combustiveis;
 
-    Posto(){
+    public Posto(){
         combustiveis = new ArrayList();
     }
     
-    Posto(String CNPJ, String razaoSocial, String nomeFantasia, String bandeira, String bairro, String CEP, String imagem){
+    public Posto(String CNPJ, String razaoSocial, String nomeFantasia, String bandeira, String endereco, String bairro, String CEP, String imagem){
         this.CNPJ = CNPJ;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         this.bandeira = bandeira;
+        this.bandeira = endereco;
         this.bairro = bairro;
         this.CEP = CEP;
         this.imagem = imagem;
