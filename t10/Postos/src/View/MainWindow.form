@@ -133,7 +133,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="addGasolinaButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Gasolina"/>
+        <Property name="text" type="java.lang.String" value="Add Combustivel"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

@@ -14,6 +14,12 @@ public class Combustivel {
     private float preco;
     private Date data;
 
+    public Combustivel(String tipo, float preco, Date data){
+        this.tipo = tipo;
+        this.preco = preco;
+        this.data = data;
+    }
+    
     public String getTipo() {
         return tipo;
     }

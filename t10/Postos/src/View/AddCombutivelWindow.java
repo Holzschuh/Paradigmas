@@ -4,24 +4,27 @@
  * and open the template in the editor.
  */
 package View;
+import Model.Combustivel;
 import Model.Posto;
 import Model.PostoTableModel;
+import java.util.Date;
 /**
  *
  * @author Inutiu
  */
-public class AddGasolinaWindow extends javax.swing.JFrame {
+public class AddCombutivelWindow extends javax.swing.JFrame {
 
-     PostoTableModel model;
-    MainWindow main;
+    private int index;
+    private PostoTableModel model;
+    private MainWindow main;
     /**
      * Creates new form AddGasolinaWindow
      */
-    public AddGasolinaWindow() {
+    public AddCombutivelWindow() {
         initComponents();
     }
     
-    public AddGasolinaWindow(MainWindow main ,PostoTableModel model) {
+    public AddCombutivelWindow(MainWindow main ,PostoTableModel model) {
         this.model = model;
         this.main = main;
         initComponents();
@@ -52,6 +55,11 @@ public class AddGasolinaWindow extends javax.swing.JFrame {
         jLabel2.setText("Preco");
 
         addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         cancelarButton.setText("Cancelar");
         cancelarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +123,23 @@ public class AddGasolinaWindow extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        if(hasEmptyFields()){
+            messageEmptyLabel.setVisible(true);
+        }
+        else{
+            Combustivel gas = new Combustivel(tipoTextField.getText(), Float.parseFloat(precoTextField.getText()), new Date());
+            model.addCombustivel(gas, index);
+            this.setVisible(false);
+            this.dispose();
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private boolean hasEmptyFields(){
+        return (tipoTextField.getText().length() == 0 || precoTextField.getText().length() == 0);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -132,20 +157,21 @@ public class AddGasolinaWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddGasolinaWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddCombutivelWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddGasolinaWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddCombutivelWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddGasolinaWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddCombutivelWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddGasolinaWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddCombutivelWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddGasolinaWindow().setVisible(true);
+                new AddCombutivelWindow().setVisible(true);
             }
         });
     }

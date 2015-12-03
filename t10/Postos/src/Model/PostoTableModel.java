@@ -35,6 +35,10 @@ public class PostoTableModel{
     public void addPosto(Posto p){
         postos.add(0, p);
     }
+    
+    public void addCombustivel(Combustivel gas, int index){
+        postos.get(index).addCombustivel(gas);
+    }
 
     public int getSelectedStation() {
         return selectedStation;

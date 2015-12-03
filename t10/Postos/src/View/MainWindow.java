@@ -77,7 +77,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        addGasolinaButton.setText("Add Gasolina");
+        addGasolinaButton.setText("Add Combustivel");
         addGasolinaButton.setEnabled(false);
         addGasolinaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +142,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addGasolinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGasolinaButtonActionPerformed
         // TODO add your handling code here:
-        AddGasolinaWindow addWindow = new AddGasolinaWindow(this, model);
+        AddCombutivelWindow addWindow = new AddCombutivelWindow(this, model);
         addWindow.setVisible(true);
     }//GEN-LAST:event_addGasolinaButtonActionPerformed
 
