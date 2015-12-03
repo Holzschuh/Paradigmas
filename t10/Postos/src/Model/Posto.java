@@ -41,7 +41,7 @@ public class Posto {
     }
     
     @Override public String toString(){
-        return nomeFantasia;
+        return nomeFantasia + "    (" + razaoSocial + ")";
     }
     
     public String getCNPJ() {

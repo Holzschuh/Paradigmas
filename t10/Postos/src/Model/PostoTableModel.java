@@ -13,9 +13,18 @@ import java.util.ArrayList;
  */
 public class PostoTableModel{
     private ArrayList<Posto> postos;
-
+    
     public PostoTableModel() {
         postos = new ArrayList();
+    }
+    
+    public boolean existsInList(String razaoSocial){
+        for(int i=0; i<postos.size(); i++){
+            if(postos.get(i).getRazaoSocial().equals(razaoSocial)){
+                return true;
+            }
+        }
+        return false;
     }
     
     public ArrayList<Posto> getPostos(){
