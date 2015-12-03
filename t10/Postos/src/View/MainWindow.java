@@ -5,20 +5,27 @@
  */
 package View;
 import Model.PostoTableModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author Inutiu
  */
 public class MainWindow extends javax.swing.JFrame {
     
-    private PostoTableModel postos;
+    private PostoTableModel model;
+    private int selectedStation;
     
     /**
      * Creates new form mainWindow
      */
     public MainWindow() {
-        postos = new PostoTableModel();
+        model = new PostoTableModel();
         initComponents();
+        
+        updateList(model);
+        postosList.addListSelectionListener(stationListSelectionListener);
     }
 
     /**
@@ -37,7 +44,8 @@ public class MainWindow extends javax.swing.JFrame {
         alteraButton = new javax.swing.JButton();
         consultaTextField = new javax.swing.JTextField();
         consultaLabel = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
+        addPostoButton = new javax.swing.JButton();
+        addGasolinaButton = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -62,12 +70,15 @@ public class MainWindow extends javax.swing.JFrame {
 
         consultaLabel.setText("Bairro:");
 
-        addButton.setText("Add...");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        addPostoButton.setText("Add Posto");
+        addPostoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                addPostoButtonActionPerformed(evt);
             }
         });
+
+        addGasolinaButton.setText("Add Preco");
+        addGasolinaButton.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +93,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(alteraButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addButton)))
+                        .addComponent(addPostoButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addGasolinaButton)))
                 .addGap(0, 86, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
@@ -104,7 +117,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeButton)
                     .addComponent(alteraButton)
-                    .addComponent(addButton))
+                    .addComponent(addPostoButton)
+                    .addComponent(addGasolinaButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -115,15 +129,27 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_consultaTextFieldActionPerformed
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addPostoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPostoButtonActionPerformed
         // TODO add your handling code here:
-        AddWindow addWindow = new AddWindow(this, postos);
+        AddPostoWindow addWindow = new AddPostoWindow(this, model);
         addWindow.setVisible(true);
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_addPostoButtonActionPerformed
 
     public void updateList(PostoTableModel model){
         postosList.setListData(model.getPostos().toArray());
     }
+    
+    ListSelectionListener stationListSelectionListener = new ListSelectionListener() {
+        
+      @Override
+      public void valueChanged(ListSelectionEvent listSelectionEvent) {
+            int i =  postosList.getSelectedIndex();
+            if( i >= 0 ){
+                model.setSelectedStation(i);
+                addGasolinaButton.setEnabled(true);
+            }
+      }
+};
     
     /**
      * @param args the command line arguments
@@ -162,7 +188,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    private javax.swing.JButton addGasolinaButton;
+    private javax.swing.JButton addPostoButton;
     private javax.swing.JButton alteraButton;
     private javax.swing.JLabel consultaLabel;
     private javax.swing.JTextField consultaTextField;

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class PostoTableModel{
     private ArrayList<Posto> postos;
+    private int selectedStation;
     
     public PostoTableModel() {
         postos = new ArrayList();
@@ -33,6 +34,14 @@ public class PostoTableModel{
     
     public void addPosto(Posto p){
         postos.add(0, p);
+    }
+
+    public int getSelectedStation() {
+        return selectedStation;
+    }
+
+    public void setSelectedStation(int selectedStation) {
+        this.selectedStation = selectedStation;
     }
     
     public void removePosto(int index){
