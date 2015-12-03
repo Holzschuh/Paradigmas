@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Inutiu
@@ -19,7 +21,24 @@ public class Posto {
     private String bairro;
     private String CEP;
     private String imagem;
+    private final static int maxCombustiveis = 10;
+    private ArrayList<Combustivel> combustiveis;
 
+    Posto(){
+        combustiveis = new ArrayList();
+    }
+    
+    Posto(String CNPJ, String razaoSocial, String nomeFantasia, String bandeira, String bairro, String CEP, String imagem){
+        this.CNPJ = CNPJ;
+        this.razaoSocial = razaoSocial;
+        this.nomeFantasia = nomeFantasia;
+        this.bandeira = bandeira;
+        this.bairro = bairro;
+        this.CEP = CEP;
+        this.imagem = imagem;
+        combustiveis = new ArrayList();
+    }
+    
     public String getCNPJ() {
         return CNPJ;
     }
@@ -84,5 +103,10 @@ public class Posto {
         this.imagem = imagem;
     }
     
-    
+    public void addCombustivel(Combustivel c){
+        if(combustiveis.size() == maxCombustiveis)
+            combustiveis.remove(maxCombustiveis - 1);
+        
+        combustiveis.add(0, c);
+    }
 }

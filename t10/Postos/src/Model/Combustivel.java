@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
-
+import java.util.Date;
 /**
  *
  * @author Inutiu
@@ -12,6 +12,7 @@ package Model;
 public class Combustivel {
     private String tipo;
     private float preco;
+    private Date data;
 
     public String getTipo() {
         return tipo;
@@ -27,5 +28,9 @@ public class Combustivel {
 
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+    
+    public void setData(Date d){
+        this.data = d;
     }
 }
