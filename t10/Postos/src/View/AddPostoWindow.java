@@ -11,7 +11,7 @@ import Model.PostoTableModel;
  * @author Inutiu
  */
 public class AddPostoWindow extends javax.swing.JFrame {
-    PostoTableModel postos;
+    PostoTableModel model;
     MainWindow main;
     /**
      * Creates new form AddWindow
@@ -22,8 +22,8 @@ public class AddPostoWindow extends javax.swing.JFrame {
         messageExistsLabel.setVisible(false);
     }
     
-    public AddPostoWindow(MainWindow main ,PostoTableModel postos) {
-        this.postos = postos;
+    public AddPostoWindow(MainWindow main ,PostoTableModel model) {
+        this.model = model;
         this.main = main;
         initComponents();
         messageEmptyLabel.setVisible(false);
@@ -248,15 +248,15 @@ public class AddPostoWindow extends javax.swing.JFrame {
         else{
             Posto posto = new Posto(cnpjTextField.getText(), razaoSocialTextField.getText(), nomeTextField.getText(), bandeiraTextField.getText(),
                                                         enderecoTextField.getText() ,bairroTextField.getText() ,cepTextField.getText(), imagemTextField.getText());
-            postos.addPosto(posto);
-            main.updateList(postos);
+            model.addPosto(posto);
+            main.updateList(model);
             this.setVisible(false);
             this.dispose();
         }
     }//GEN-LAST:event_addButtonActionPerformed
     
     private boolean alreadyExists(String razaoSocial){
-        return postos.existsInList(razaoSocial);
+        return model.existsInList(razaoSocial);
     }
     
     private boolean hasEmptyFields(){

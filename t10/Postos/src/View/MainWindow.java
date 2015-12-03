@@ -77,8 +77,13 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        addGasolinaButton.setText("Add Preco");
+        addGasolinaButton.setText("Add Gasolina");
         addGasolinaButton.setEnabled(false);
+        addGasolinaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGasolinaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +139,12 @@ public class MainWindow extends javax.swing.JFrame {
         AddPostoWindow addWindow = new AddPostoWindow(this, model);
         addWindow.setVisible(true);
     }//GEN-LAST:event_addPostoButtonActionPerformed
+
+    private void addGasolinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGasolinaButtonActionPerformed
+        // TODO add your handling code here:
+        AddGasolinaWindow addWindow = new AddGasolinaWindow(this, model);
+        addWindow.setVisible(true);
+    }//GEN-LAST:event_addGasolinaButtonActionPerformed
 
     public void updateList(PostoTableModel model){
         postosList.setListData(model.getPostos().toArray());

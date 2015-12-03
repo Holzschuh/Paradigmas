@@ -133,9 +133,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="addGasolinaButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Preco"/>
+        <Property name="text" type="java.lang.String" value="Add Gasolina"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addGasolinaButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
