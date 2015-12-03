@@ -32,7 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        postosList = new javax.swing.JList();
         removeButton = new javax.swing.JButton();
         alteraButton = new javax.swing.JButton();
         consultaTextField = new javax.swing.JTextField();
@@ -43,12 +43,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        postosList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(postosList);
 
         removeButton.setText("Remover");
 
@@ -117,10 +117,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        AddWindow addWindow = new AddWindow(postos);
+        AddWindow addWindow = new AddWindow(this, postos);
         addWindow.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
+    public void updateList(PostoTableModel model){
+        postosList.setListData(model.getPostos().toArray());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -163,8 +167,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel consultaLabel;
     private javax.swing.JTextField consultaTextField;
     private javax.swing.JButton jButton2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList postosList;
     private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }

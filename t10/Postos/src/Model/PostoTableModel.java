@@ -18,6 +18,10 @@ public class PostoTableModel{
         postos = new ArrayList();
     }
     
+    public ArrayList<Posto> getPostos(){
+        return postos;
+    }
+    
     public void addPosto(Posto p){
         postos.add(0, p);
     }

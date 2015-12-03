@@ -40,6 +40,10 @@ public class Posto {
         combustiveis = new ArrayList();
     }
     
+    @Override public String toString(){
+        return nomeFantasia;
+    }
+    
     public String getCNPJ() {
         return CNPJ;
     }

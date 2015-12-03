@@ -12,16 +12,20 @@ import Model.PostoTableModel;
  */
 public class AddWindow extends javax.swing.JFrame {
     PostoTableModel postos;
+    MainWindow main;
     /**
      * Creates new form AddWindow
      */
     public AddWindow(){
         initComponents();
+        messageLabel.setVisible(false);
     }
     
-    public AddWindow(PostoTableModel postos) {
+    public AddWindow(MainWindow main ,PostoTableModel postos) {
         this.postos = postos;
+        this.main = main;
         initComponents();
+        messageLabel.setVisible(false);
     }
 
     /**
@@ -51,6 +55,7 @@ public class AddWindow extends javax.swing.JFrame {
         imagemTextField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
+        messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,50 +107,53 @@ public class AddWindow extends javax.swing.JFrame {
             }
         });
 
+        messageLabel.setForeground(new java.awt.Color(255, 0, 0));
+        messageLabel.setText("Todos os campos devem estar preenchidos!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addContainerGap(332, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(30, 30, 30)
-                                .addComponent(bandeiraTextField))))
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)))
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelarButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(cancelarButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bairroTextField)
-                                    .addComponent(cepTextField)
-                                    .addComponent(imagemTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(enderecoTextField)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(razaoSocialTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                            .addComponent(nomeTextField)
-                                            .addComponent(cnpjTextField))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(100, 100, 100))
+                            .addComponent(bairroTextField)
+                            .addComponent(cepTextField)
+                            .addComponent(imagemTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(enderecoTextField)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(messageLabel)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(razaoSocialTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(nomeTextField)
+                                    .addComponent(cnpjTextField)
+                                    .addComponent(bandeiraTextField))))))
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,11 +190,13 @@ public class AddWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(imagemTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(messageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(cancelarButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -217,13 +227,17 @@ public class AddWindow extends javax.swing.JFrame {
                 bandeiraTextField.getText().length() == 0 || enderecoTextField.getText().length() == 0 || bairroTextField.getText().length() == 0 || 
                 cepTextField.getText().length() == 0 || imagemTextField.getText().length() == 0)
         {
-            // não bateu
+            messageLabel.setVisible(true);
         }
         else{
             Posto posto = new Posto(cnpjTextField.getText(), razaoSocialTextField.getText(), nomeTextField.getText(), bandeiraTextField.getText(),
                                                         enderecoTextField.getText() ,bairroTextField.getText() ,cepTextField.getText(), imagemTextField.getText());
             postos.addPosto(posto);
+            main.updateList(postos);
+            this.setVisible(false);
+            this.dispose();
         }
+        
         
         
     }//GEN-LAST:event_addButtonActionPerformed
@@ -280,6 +294,7 @@ public class AddWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel messageLabel;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField razaoSocialTextField;
     // End of variables declaration//GEN-END:variables
